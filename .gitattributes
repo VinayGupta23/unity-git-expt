@@ -1,6 +1,15 @@
 # Reference: https://gist.github.com/Srfigie/77b5c15bc5eb61733a74d34d10b3ed87
 
-#Image
+# Smart merge
+#############
+
+*.unity merge=unityyamlmerge
+*.prefab merge=unityyamlmerge
+
+# LFS
+#####
+
+# Image
 *.jpg filter=lfs diff=lfs merge=lfs -text
 *.jpeg filter=lfs diff=lfs merge=lfs -text
 *.png filter=lfs diff=lfs merge=lfs -text
@@ -9,11 +18,11 @@
 *.ai filter=lfs diff=lfs merge=lfs -text
 *.tif filter=lfs diff=lfs merge=lfs -text
 
-#Audio
+# Audio
 *.mp3 filter=lfs diff=lfs merge=lfs -text
 *.wav filter=lfs diff=lfs merge=lfs -text
 *.ogg filter=lfs diff=lfs merge=lfs -text
 
-#Video
+# Video
 *.mp4 filter=lfs diff=lfs merge=lfs -text
 *.mov filter=lfs diff=lfs merge=lfs -text
