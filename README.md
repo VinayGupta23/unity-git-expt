@@ -1,10 +1,42 @@
 # Unity + Git Merge Experiment
 
-## Pre-requisites
+## 1. Configure [Unity Smart Merge](https://docs.unity3d.com/Manual/SmartMerge.html)
 
-Please setup this repository following this [README from the game project](https://github.com/vinayg-usc/alter-ego-game/tree/env-setup#step-2-configure-unity-smart-merge).
+Locate your Unity installation, hence denoted as `UNITY_TOOLS_FOLDER`.
+  - For example, on Windows it is `C:/Program Files/Unity/Hub/Editor/2021.3.8f1/Editor/Data/Tools/`
+ - This folder has two files of interest:
+   - `UnityYAMLMerge.exe`: The program that performs smart merge
+   - `mergespecfile.txt`: Configuration of "fallback" merge tool for remaining conflicts
 
-## Steps
+Open your local git config using: `git config --local --edit` and paste the following:
+```conf
+[merge]
+    tool = unityyamlmerge
+[mergetool "unityyamlmerge"]
+    keepBackup = false
+    trustExitCode = false
+    cmd = \"<UNITY_TOOLS_FOLDER>/UnityYAMLMerge.exe\" merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+```
+
+Replace the contents of `mergespecfile.txt`, to setup your "fallback" merge tool. The below shows an example for VS Code:
+
+```txt
+#
+# UnityYAMLMerge fallback file
+#
+# %l is replaced with the path of you local version
+# %r is replaced with the path of the incoming remote version
+# %b is replaced with the common base version
+# %d is replaced with a path where the result should be written to
+# On Windows %programs% is replaced with "C:\Program Files" and "C:\Program Files (x86)" there by resulting in two entries to try out
+# On OSX %programs% is replaced with "/Applications" and "$HOME/Applications" thereby resulting in two entries to try out
+
+* use "%programs%/Microsoft VS Code/bin/code" --wait --merge %r %l %b %d
+```
+
+**If you are using SourceTree, you may want to check this [YouTube tutorial](https://youtu.be/P_vLYDq2YkE).**
+
+## 2. Doing the merge
 
 There are two branches:
 
