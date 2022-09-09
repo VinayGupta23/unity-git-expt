@@ -2,7 +2,7 @@
 
 ## Pre-requisites
 
-Please setup this repository following this [README from the game project](https://github.com/vinayg-usc/alter-ego-game/tree/env-setup#environment-setup).
+Please setup this repository following this [README from the game project](https://github.com/vinayg-usc/alter-ego-game/tree/env-setup#step-2-configure-unity-smart-merge).
 
 ## Steps
 
